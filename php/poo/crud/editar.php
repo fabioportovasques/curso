@@ -1,3 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+<script>
+	function funcao1()
+	{
+	alert("Eu sou um alert!");
+	}
+
+</script>
+
+
+</head>
+<body>
+
+</body>
+</html>
 <?php
 
 	include 'Contato.class.php';
@@ -31,8 +51,8 @@
 	<label>Nome</label>
 	<input type="text" name="nome" value="<?php echo $info['nome']; ?>"><br /><br />
 
-	E-mail: <br />
-	<?php echo $info['email']; ?><br /><br />
+	<label>E-mail</label>
+	<input type="email" name="email"  value="<?php echo $info['email']; ?>"><br /><br />
 
-	<input type="submit" vaalue="Salvar" name="">
+	<input type="submit" value="Salvar" name="">
 </form>

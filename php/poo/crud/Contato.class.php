@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+
+
+
+</head>
+<body>
+
+</body>
+</html>
+
 <?php
 class Contato {
 
@@ -45,15 +59,35 @@ class Contato {
 		}
 	}
 
-	public function editar($nome, $id) {
-		
-			$sql = "UPDATE contatos SET nome = :nome WHERE id = :id";
+	public function editar($nome,$email,$id) {
+			if($this->existeEmail($email) == false) { 					//Se não existir o email, prossegue
+			$sql = "UPDATE contatos SET nome = :nome, email = :email WHERE id = :id";
 			$sql = $this->pdo->prepare($sql);
 			$sql->bindValue(':nome', $nome);
+			$sql->bindValue(':email', $email);
 			$sql->bindValue(':id', $id);
 			$sql->execute();
 
-			return true;
+
+			
+				?>
+				    <script type="text/javascript">
+				         window.alert('Alterado com sucesso!')
+				         window.location.href='index.php';
+				     </script>
+				  <?php
+						
+
+	}	else {
+		
+		 ?>              
+		    <script type="text/javascript">
+		        window.alert('E-mail já existe, tente outro!')
+		        window.location.href='.<?php echo $info['email']; ?>.'
+		     </script>
+		<?php
+
+	}
 		
 	}
 
@@ -70,6 +104,13 @@ class Contato {
 		$sql = $this->pdo->prepare($sql);
 		$sql->bindValue(':id',$id);
 		$sql->execute();
+
+		?>
+				    <script type="text/javascript">
+				         window.alert('Excluído  com sucesso!')
+				         window.location.href='index.php';
+				     </script>
+		<?php
 		
 	}
 
